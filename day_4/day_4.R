@@ -1,6 +1,6 @@
 library(tidyverse)
 
-clean_scratch_card_data <- function(card) {
+clean_scratch_card <- function(card) {
 
   clean_card <- list()
   clean_card$name <- card[1]
@@ -20,9 +20,9 @@ calc_card_points <- function(card) {
 }
 
 scratch_cards <-
-  readLines("day_4_inputs.txt") |>
+  readLines("day_4/day_4_inputs.txt") |>
   str_split(pattern = ":|\\|") |>
-  map(clean_scratch_card_data)
+  map(clean_scratch_card)
 
 total_points <-
   scratch_cards |>
