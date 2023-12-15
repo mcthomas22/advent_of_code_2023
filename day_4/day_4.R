@@ -73,6 +73,7 @@ expand_cards <- function(current_card_number, current_card_table) {
 
 expand_all_cards <- function(card_table) expand_cards(1, card_table)
 
+
 number_of_unique_cards <- length(scratch_cards)
 
 number_of_wins <-
