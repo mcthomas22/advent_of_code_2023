@@ -10,10 +10,11 @@ readLines("day_1/day_1_inputs.txt") |>
 
 #---------------PART 2----------------
 
-reverse_string <- function(strings) {
-  sapply(strings, function(s) {
-    str_c(rev(str_split(s, pattern = "")[[1]]), collapse = "")
-  })
+str_rev <- function(strings) {
+  strings |>
+    str_split("") |>
+    map(rev) |>
+    map_vec(function(s) str_c(s, collapse = ""))
 }
 
 numbers_as_words <-
@@ -24,7 +25,7 @@ one_digit_integer_pattern <-
   paste(collapse = "|")
 
 one_digit_integer_pattern_rev <-
-  c(reverse_string(numbers_as_words), "[1-9]") |>
+  c(str_rev(numbers_as_words), "[1-9]") |>
   paste(collapse = "|")
 
 extract_first_and_last <- function(line) {
@@ -36,9 +37,9 @@ extract_first_and_last <- function(line) {
   # extract last
   last <-
     line |>
-    reverse_string() |>
+    str_rev() |>
     str_extract(one_digit_integer_pattern_rev) |>
-    reverse_string()
+    str_rev()
 
   c(first, last)
 }
