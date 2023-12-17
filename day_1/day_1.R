@@ -44,7 +44,7 @@ extract_first_and_last <- function(line) {
   c(first, last)
 }
 
-convert_words_to_number <- function(numbers) {
+convert_words_to_numbers <- function(numbers) {
   if_else(numbers %in% numbers_as_words,
     match(numbers, numbers_as_words) |> as.character(),
     numbers
@@ -57,6 +57,8 @@ concat_digits_as_number <- function(numbers) {
 
 readLines("day_1/day_1_inputs.txt") |>
   map(extract_first_and_last) |>
-  map(convert_words_to_number) |>
+  map(convert_words_to_numbers) |>
   map_vec(concat_digits_as_number) |>
   sum()
+
+
